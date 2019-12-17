@@ -1,2 +1,2 @@
-# submission-liff
- Submission LINE LIFF untuk memenuhi persyaratan kelulusan Dicoding
+# Liff-Project
+ Project Dicoding LINE LIFF (Beasiswa LINE)
