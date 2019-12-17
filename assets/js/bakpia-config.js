@@ -1,4 +1,4 @@
-function loadCatatan() {
+function loadOrderan() {
     if (localStorage.list_data && localStorage.id_data) {
         list_data = JSON.parse(localStorage.getItem('list_data'));
         var data_app = "";
@@ -7,8 +7,7 @@ function loadCatatan() {
             data_app += '<thead>' +
                 '<th>ID</th>' +
                 '<th>Nama</th>' +
-                '<th>Tanggal</th>' +
-                '<th>Agenda</th>' +
+                '<th>Jumlah</th>' +
                 '<th>Hapus Agenda</th>' +
                 '<th>Lihat Agenda</th>' +
                 '<th>Edit Agenda</th>' +
@@ -19,8 +18,7 @@ function loadCatatan() {
                 data_app +=
                     '<td>' + list_data[i].id_data + ' </td>' +
                     '<td>' + list_data[i].nama + ' </td>' +
-                    '<td>' + list_data[i].tanggal + ' </td>' +
-                    '<td>' + list_data[i].agenda + ' </td>' +
+                    '<td>' + list_data[i].jumlah + ' </td>' +
                     '<td><a class="btn btn-danger btn-small" href="javascript:void(0)" onclick="hapusData(\'' + list_data[i].id_data + '\')">Hapus</a></td>' +
                     '<td><a class="btn btn-danger btn-small" href="javascript:void(0)" onclick="lihatData(\'' + list_data[i].id_data + '\')">Lihat</a></td>' +
                     '<td><a class="btn btn-warning btn-small" href="javascript:void(0)" onclick="editData(\'' + list_data[i].id_data + '\')">Edit</a></td>';
@@ -50,8 +48,7 @@ function editData(id) {
             if (list_data[i].id_data == id) {
                 $("#eid_data").val(list_data[i].id_data);
                 $("#enama").val(list_data[i].nama);
-                $("#etanggal").val(list_data[i].tanggal);
-                $("#eagenda").val(list_data[i].agenda);
+                $("#ejumlah").val(list_data[i].jumlah);
                 list_data.splice(idx_data, 1);
             }
             idx_data++;
@@ -70,8 +67,7 @@ function lihatData(id) {
             if (list_data[i].id_data == id) {
                 $("#lid_data").val(list_data[i].id_data);
                 $("#lnama").val(list_data[i].nama);
-                $("#ltanggal").val(list_data[i].tanggal);
-                $("#lagenda").val(list_data[i].agenda);
+                $("#ljumlah").val(list_data[i].jumlah);
                 list_data.splice(idx_data, 1);
             }
             idx_data++;
@@ -85,8 +81,7 @@ function lihatData(id) {
 function simpanData() {
  
     nama = $('#nama').val();
-    tanggal = $('#tanggal').val();
-    agenda = $('#agenda').val();
+    tanggal = $('#jumlah').val();
  
     if (localStorage.list_data && localStorage.id_data) {
         list_data = JSON.parse(localStorage.getItem('list_data'));
@@ -98,7 +93,7 @@ function simpanData() {
     }
  
     id_data++;
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'tanggal': tanggal, 'agenda': agenda });
+    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah });
     localStorage.setItem('list_data', JSON.stringify(list_data));
     localStorage.setItem('id_data', id_data);
     document.getElementById('form-data').reset();
@@ -111,10 +106,9 @@ function simpanEditData() {
  
     id_data = $('#eid_data').val();
     nama = $('#enama').val();
-    tanggal = $('#etanggal').val();
-    agenda = $('#eagenda').val();
+    tanggal = $('#ejumlah').val();
  
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'tanggal': tanggal, 'agenda': agenda });
+    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah });
     localStorage.setItem('list_data', JSON.stringify(list_data));
     document.getElementById('eform-data').reset();
     gantiMenu('list-orderan');
@@ -136,14 +130,14 @@ function hapusData(id) {
         }
  
         localStorage.setItem('list_data', JSON.stringify(list_data));
-        loadCatatan();
+        loadOrderan();
     }
 }
  
  
 function gantiMenu(menu) {
     if (menu == "list-orderan") {
-        loadCatatan();
+        loadOrderan();
         $('#pre-order').hide();
         $('#list-orderan').fadeIn();
         $('#edit-data').hide();

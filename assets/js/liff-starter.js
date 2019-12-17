@@ -5,6 +5,7 @@ window.onload = function() {
     // DO NOT CHANGE THIS
     let myLiffId = "";
 
+
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
@@ -24,6 +25,7 @@ window.onload = function() {
         myLiffId = defaultLiffId;
         initializeLiffOrDie(myLiffId);
     }
+    
 };
 
 /**
@@ -96,6 +98,7 @@ function displayIsInClientInfo() {
 }
 
 function registerButtonHandlers() {
+
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
             url: 'https://lineliffvaldy.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
@@ -143,22 +146,23 @@ function registerButtonHandlers() {
 
 function simpanData() {
  
+    
+    nama = $('#nama').val();
+    jumlah = $('#jumlah').val();
+
     if (!liff.isInClient()) {
         sendAlertIfNotInClient();
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': "Catatan baru berhasil disimpan"
+            'text': "Kakak "+nama+" memesan bakpia dengan jumlah "+jumlah+" !"
         }]).then(function() {
-            alert('Catatan Tersimpan');
+            alert('Pre Order Berhasil');
         }).catch(function(error) {
-            alert('Aduh kok error ya...');
+            alert('Ada error nih');
         });
     }
  
-    nama = $('#nama').val();
-    tanggal = $('#tanggal').val();
-    agenda = $('#agenda').val();
  
     if (localStorage.list_data && localStorage.id_data) {
         list_data = JSON.parse(localStorage.getItem('list_data'));
@@ -170,11 +174,11 @@ function simpanData() {
     }
  
     id_data++;
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'tanggal': tanggal, 'agenda': agenda });
+    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah });
     localStorage.setItem('list_data', JSON.stringify(list_data));
     localStorage.setItem('id_data', id_data);
     document.getElementById('form-data').reset();
-    gantiMenu('list-catatan');
+    gantiMenu('list-orderan');
  
     return false;
 }
@@ -186,23 +190,22 @@ function simpanEditData() {
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': "Catatan yang diedit sudah tersimpan"
+            'text': "Orderan telah diedit"
         }]).then(function() {
-            alert('Catatan tersimpan');
+            alert('Orderan diedit');
         }).catch(function(error) {
-            alert('Aduh kok error ya...');
+            alert('Ada error -_-');
         });
     }
  
     id_data = $('#eid_data').val();
     nama = $('#enama').val();
-    tanggal = $('#etanggal').val();
-    agenda = $('#eagenda').val();
+    jumlah = $('#ejumlah').val();
  
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'tanggal': tanggal, 'agenda': agenda });
+    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah });
     localStorage.setItem('list_data', JSON.stringify(list_data));
     document.getElementById('eform-data').reset();
-    gantiMenu('list-catatan');
+    gantiMenu('list-orderan');
  
     return false;
 }
@@ -214,11 +217,11 @@ function hapusData(id) {
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': "Catatan sudah terhapus"
+            'text': "Orderan sudah dibatalkan"
         }]).then(function() {
-            alert('Catatan sudah dihapus');
+            alert('Orderan dibatalkan');
         }).catch(function(error) {
-            alert('Aduh kok nggak bisa');
+            alert('Ada error -_-');
         });
     }
  
@@ -234,12 +237,12 @@ function hapusData(id) {
         }
  
         localStorage.setItem('list_data', JSON.stringify(list_data));
-        loadCatatan();
+        loadOrderan();
     }
 }
 
 function sendAlertIfNotInClient() {
-    alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+    alert('Fungsi ini tidak berjalan pada External Browser, gunakan aplikasi LINE !.');
 }
 
 /**

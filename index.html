@@ -19,12 +19,13 @@
  
 </head>
  
-<body onload="loadCatatan();">
+<body onload="loadOrderan();">
  
     <div class="col-xs-12 col-md-8 col-md-offset-2" ng-controller="listContactCtrl">
         <div class="page-header">
             <center>
                 <img src="assets/img/logo.jpg" class="img-fluid" alt="Responsive image">
+                <p>Kami menjual bakpia dengan sepenuh hati</p>
             </center>
             <ul class="nav nav-pills">
                 <li><a id="nav-list-orderan" href="javascript:void(0);" onclick="gantiMenu('list-orderan');">List Orderan</a></li>
@@ -39,12 +40,8 @@
                     <input type="text" class="form-control" id="nama" name="nama">
                 </div>
                 <div id="tanggal-group" class="form-group">
-                    <label>Tanggal:</label>
-                    <input type="text" class="form-control" id="tanggal" name="tanggal">
-                </div>
-                <div id="agenda-group" class="form-group">
-                    <label>Agenda:</label>
-                    <textarea class="form-control" id="agenda" name="agenda"></textarea><br />
+                    <label>Jumlah:</label>
+                    <input type="number" class="form-control" id="jumlah" name="jumlah">
                 </div>
                 <input type="button" value="Simpan" onclick="simpanData();" class="btn btn-success btn-small" />
                 <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small" />
@@ -64,13 +61,10 @@
                     <input type="text" class="form-control" id="enama" name="nama">
                 </div>
                 <div id="tanggal-group" class="form-group">
-                    <label>Tanggal:</label>
-                    <input type="text" class="form-control" id="etanggal" name="tanggal">
+                    <label>Jumlah:</label>
+                    <input type="text" class="form-control" id="ejumlah" name="jumlah">
                 </div>
-                <div id="agenda-group" class="form-group">
-                    <label>Agenda:</label>
-                    <textarea class="form-control" id="eagenda" name="agenda"></textarea><br />
-                </div>
+                
                 <input type="button" value="Simpan" onclick="simpanEditData();" class="btn btn-success btn-small" />
                 <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small" />
                 <input type="button" value="Cancel" onclick="gantiMenu('list-orderan');"
@@ -91,12 +85,8 @@
                     <input type="text" class="form-control" id="lnama" name="nama" disabled>
                 </div>
                 <div id="tanggal-group" class="form-group">
-                    <label for="disabled">Tanggal:</label>
-                    <input type="text" class="form-control" id="ltanggal" name="tanggal" disabled>
-                </div>
-                <div id="agenda-group" class="form-group">
-                    <label for="disabled">Agenda:</label>
-                    <textarea class="form-control" id="lagenda" name="agenda" disabled></textarea>
+                    <label for="disabled">Jumlah:</label>
+                    <input type="text" class="form-control" id="ljumlah" name="jumlah" disabled>
                 </div>
                 <input type="button" value="Kembali" onclick="gantiMenu('list-orderan');"
                     class="btn btn-warning btn-small" />
@@ -124,11 +114,11 @@
                 <h3 id="liffDataHeader" class="textLeft">Informasi:</h3>
                 <table>
                     <tr>
-                        <th>isInClient : </th>
+                        <th>Apakah menggunakan App LINE : </th>
                         <td id="isInClient" class="textLeft"></td>
                     </tr>
                     <tr>
-                        <th>isLoggedIn : </th>
+                        <th>Apakah anda sudah login : </th>
                         <td id="isLoggedIn" class="textLeft"></td>
                     </tr>
                 </table>
@@ -141,10 +131,7 @@
             <div id="statusMessage">
                 <div id="isInClientMessage"></div>
                 <div id="apiReferenceMessage">
-                    <p>Available LIFF methods vary depending on the browser you use to open the LIFF app.</p>
-                    <p>Please refer to the <a
-                            href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">API reference
-                            page</a> for more information.</p>
+                    <p>Untuk bisa mengakses semua fitur disini, gunakan di aplikasi LINE.</p>
                 </div>
             </div>
         </div>
