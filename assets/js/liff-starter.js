@@ -94,6 +94,9 @@ function displayIsInClientInfo() {
         document.getElementById('isInClientMessage').textContent = 'Kamu buka di aplikasi LINE.';
     } else {
         document.getElementById('isInClientMessage').textContent = 'Kamu buka di Ekstenal Browser';
+        $('#sendMessageButton').fadeOut(1500);
+        $('#closeWindowButton').fadeOut(1500);
+        $('#openWindowButton').fadeOut(1500);
     }
 }
 

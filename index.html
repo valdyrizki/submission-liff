@@ -100,25 +100,17 @@
         <!--Konten LIFF v2-->
  
         <div id="liffAppContent">
-            <!-- ACTION BUTTONS -->
-            <div class="buttonGroup">
-                <div class="buttonRow">
-                    <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
-                    <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
-                    <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
-                </div>
-            </div>
  
             <!-- LIFF DATA -->
             <div id="liffData">
                 <h3 id="liffDataHeader" class="textLeft">Informasi:</h3>
                 <table>
                     <tr>
-                        <th>Apakah menggunakan App LINE : </th>
+                        <th>Via App LINE : </th>
                         <td id="isInClient" class="textLeft"></td>
                     </tr>
                     <tr>
-                        <th>Apakah anda sudah login : </th>
+                        <th>Udah Login : </th>
                         <td id="isLoggedIn" class="textLeft"></td>
                     </tr>
                 </table>
@@ -127,6 +119,14 @@
             <div class="buttonGroup">
                 <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
                 <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
+            </div>
+            <!-- ACTION BUTTONS -->
+            <div class="buttonGroup">
+                <div class="buttonRow">
+                    <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
+                    <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
+                    <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
+                </div>
             </div>
             <div id="statusMessage">
                 <div id="isInClientMessage"></div>
@@ -137,31 +137,15 @@
         </div>
         <!-- LIFF ID ERROR -->
         <div id="liffIdErrorMessage" class="hidden">
-            <p>You have not assigned any value for LIFF ID.</p>
-            <p>If you are running the app using Node.js, please set the LIFF ID as an environment variable in your
-                Heroku account follwing the below steps: </p>
-            <code id="code-block">
-                <ol>
-                    <li>Go to `Dashboard` in your Heroku account.</li>
-                    <li>Click on the app you just created.</li>
-                    <li>Click on `Settings` and toggle `Reveal Config Vars`.</li>
-                    <li>Set `MY_LIFF_ID` as the key and the LIFF ID as the value.</li>
-                    <li>Your app should be up and running. Enter the URL of your app in a web browser.</li>
-                </ol>
-            </code>
-            <p>If you are using any other platform, please add your LIFF ID in the <code>index.html</code> file.</p>
-            <p>For more information about how to add your LIFF ID, see <a
-                    href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF
-                    app</a>.</p>
+            <p>Ada error nih. pastiin ID LIFF kamu dimasukan yaa.</p>
         </div>
         <!-- LIFF INIT ERROR -->
         <div id="liffInitErrorMessage" class="hidden">
-            <p>Something went wrong with LIFF initialization.</p>
-            <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
+            <p>Ada error nih, pastikan ID sama dengan aplikasi LIFF nya yaa </p>
         </div>
         <!-- NODE.JS LIFF ID ERROR -->
         <div id="nodeLiffIdErrorMessage" class="hidden">
-            <p>Unable to receive the LIFF ID as an environment variable.</p>
+            <p>Variable yang dikirim dari LIFF ga kebaca nih.</p>
         </div>
         
     </div>
