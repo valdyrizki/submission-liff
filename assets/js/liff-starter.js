@@ -89,8 +89,8 @@ function displayLiffData() {
 */
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
-        document.getElementById('liffLoginButton').fadeOut(1000);
-        document.getElementById('liffLogoutButton').fadeOut(1000);
+        document.getElementById('liffLoginButton').classList.toggle('hidden');
+        document.getElementById('liffLogoutButton').classList.toggle('hidden');
         document.getElementById('isInClientMessage').textContent = 'Kamu buka di aplikasi LINE.';
     } else {
         document.getElementById('isInClientMessage').textContent = 'Kamu buka di Ekstenal Browser';
