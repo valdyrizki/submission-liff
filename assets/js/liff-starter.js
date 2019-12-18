@@ -160,7 +160,7 @@ function simpanData() {
             'type': 'text',
             'text': "Kakak "+nama+" memesan bakpia dengan jumlah "+jumlah+" !"
         }]).then(function() {
-            alert('Pre Order Berhasil');
+            alert('Pesanan kak '+nama+' sebanyak '+jumlah+' akan segera diproses');
         }).catch(function(error) {
             alert('Ada error nih');
         });
@@ -187,23 +187,24 @@ function simpanData() {
 }
  
 function simpanEditData() {
+
+    id_data = $('#eid_data').val();
+    nama = $('#enama').val();
+    jumlah = $('#ejumlah').val();
  
     if (!liff.isInClient()) {
         sendAlertIfNotInClient();
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': "Orderan telah diedit"
+            'text': "Orderan kak "+nama+" diubah jadi "+jumlah
         }]).then(function() {
-            alert('Orderan diedit');
+            alert('Orderan kak '+nama+' udah diubah');
         }).catch(function(error) {
-            alert('Ada error -_-');
+            alert('Maaf kak '+nama+' Ada error nih -_-');
         });
     }
  
-    id_data = $('#eid_data').val();
-    nama = $('#enama').val();
-    jumlah = $('#ejumlah').val();
  
     list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah });
     localStorage.setItem('list_data', JSON.stringify(list_data));
@@ -220,7 +221,7 @@ function hapusData(id) {
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': "Orderan sudah dibatalkan"
+            'text': "Orderan kak "+nama+" dibatalkan"
         }]).then(function() {
             alert('Orderan dibatalkan');
         }).catch(function(error) {
